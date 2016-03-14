@@ -1,3 +1,4 @@
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var image1 =  '<div class="card 1"> <img src="img/1.jpeg" alt="" /> </div>';
 var image2 =  '<div class="card 2"> <img src="img/2.jpeg" alt="" /> </div>';
 var image3 =  '<div class="card 3"> <img src="img/3.jpeg" alt="" /> </div>';
@@ -29,3 +30,23 @@ function randomizer(){
 
 
 exports.Card = Card;
+
+$(document).ready(function() {
+  $('.newgame').click(function() {
+    randomizer();
+    $(".board").empty();
+    randomCards.forEach(function(card){
+       $(".board").append(card.image);
+    });
+    var selectedCards = [];
+    $(".card").click(function(){
+      selectedCards.push(this);
+      this.clicked === true;
+      console.log($(this).attr('class'));
+      $(this).css('background', 'transparent');
+      $("img", this).show();
+    });
+  });
+});
+
+},{}]},{},[1]);
